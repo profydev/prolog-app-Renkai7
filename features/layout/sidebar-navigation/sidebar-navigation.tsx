@@ -144,9 +144,9 @@ const LinkList = styled(List)`
   flex: 1;
 `;
 
-const CollapseMenuItem = styled(MenuItemButton)`
+const CollapseMenuItem = styled(MenuItemButton)<{ isCollapsed: boolean }>`
   display: none;
-
+  transform: rotate(${({ isCollapsed }) => (isCollapsed ? "180deg" : "0")});
   @media (min-width: ${breakpoint("desktop")}) {
     display: flex;
   }
