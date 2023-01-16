@@ -176,18 +176,14 @@ export function SidebarNavigation() {
     <Container isCollapsed={isSidebarCollapsed}>
       <FixedContainer>
         <Header>
-          {isMobile ? (
-            <Logo src={"/icons/logo-large.svg"} alt="logo" />
-          ) : (
-            <Logo
-              src={
-                isSidebarCollapsed
-                  ? "/icons/logo-small.svg"
-                  : "/icons/logo-large.svg"
-              }
-              alt="logo"
-            />
-          )}
+          <Logo
+            src={
+              isSidebarCollapsed && !isMobile
+                ? "/icons/logo-small.svg"
+                : "/icons/logo-large.svg"
+            }
+            alt="logo"
+          />
 
           <MenuButton onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
             <MenuIcon
