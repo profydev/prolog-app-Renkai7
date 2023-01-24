@@ -1,3 +1,4 @@
+// import React, { useState } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import capitalize from "lodash/capitalize";
@@ -18,9 +19,15 @@ const languageNames = {
 };
 
 const statusColors = {
-  [ProjectStatus.stable]: BadgeColor.success,
+  [ProjectStatus.info]: BadgeColor.success,
   [ProjectStatus.warning]: BadgeColor.warning,
-  [ProjectStatus.critical]: BadgeColor.error,
+  [ProjectStatus.error]: BadgeColor.error,
+};
+
+const statusNames = {
+  [ProjectStatus.info]: "Stable",
+  [ProjectStatus.warning]: "Warning",
+  [ProjectStatus.error]: "Critical",
 };
 
 const Container = styled.div`
@@ -123,7 +130,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <IssuesNumber>{numEvents24h}</IssuesNumber>
           </Issues>
           <Status>
-            <Badge color={statusColors[status]}>{capitalize(status)}</Badge>
+            <Badge color={statusColors[status]}>
+              {capitalize(statusNames[status])}
+            </Badge>
           </Status>
         </InfoContainer>
       </TopContainer>
